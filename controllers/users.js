@@ -2,10 +2,9 @@ const User = require("../models/User");
 
 
 const userGET = async (req, res) => {
-    res.status(200).send('okUser GET')
-//   const usuarios = await User.findAll({ order: [["nombre", "ASC"]] });
+  const usuarios = await User.findAll({ order: [["nombre", "ASC"]] });
 
-//   res.json(usuarios);
+  res.json(usuarios);
 };
 
 const userActiveGET = async (req, res) => {
@@ -20,7 +19,6 @@ const userActiveGET = async (req, res) => {
 const userPOST = async (req, res) => {
   const { nombre, user } = req.body;
 
-  await User.sync({ force: false });
   const usuarios = await User.create({ nombre, user });
 
   res.json(usuarios);
